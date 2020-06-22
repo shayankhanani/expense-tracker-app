@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Container, Row, Card, } from 'react-bootstrap';
+import { Balance } from './components/Balance';
+import { IncomeExpenses } from './components/IncomeExpenses';
+import { TransactionList } from './components/TransactionList';
+import { AddTransaction } from './components/AddTransaction';
+import { GlobalProvider } from  './context/GlobalState'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalProvider>
+        <Container>
+        <Row className="pt-3">
+          <Card className="m-auto shadow" style={{ width: '25rem' }}>
+            <Card.Header className="text-center"><strong>Expense Tracker</strong></Card.Header>
+              <Card.Body>
+                <h6 className="text-center">YOUR BALANCE</h6>
+                <Balance/>
+                <hr/>
+                <IncomeExpenses/>
+                <br/>
+                <h6>Transaction History</h6>
+                <hr/>
+                <TransactionList/>
+                <AddTransaction/>
+              </Card.Body>
+              
+          </Card>
+        </Row>
+      </Container>
+    </GlobalProvider>
+    
   );
 }
 
