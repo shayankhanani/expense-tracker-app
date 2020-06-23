@@ -16,6 +16,7 @@ export const AddTransaction = () => {
             amount: +amount
         }
         addTransaction(newTransaction);
+        e.target.reset();
     }
     return (
         <div>
