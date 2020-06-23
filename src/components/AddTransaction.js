@@ -2,11 +2,17 @@ import React, {useState, useContext} from 'react'
 import {Form, Button} from 'react-bootstrap'
 import {GlobalContext} from '../context/GlobalState'
 
+
 export const AddTransaction = () => {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState(0);
 
     const {addTransaction} = useContext(GlobalContext);
+
+    const handleReset = () => {
+        setText('');
+        setAmount('');
+    };
 
     const onSubmit = e => {
         e.preventDefault();
@@ -16,7 +22,7 @@ export const AddTransaction = () => {
             amount: +amount
         }
         addTransaction(newTransaction);
-        e.target.reset();
+        handleReset();
     }
     return (
         <div>
